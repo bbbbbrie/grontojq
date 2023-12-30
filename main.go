@@ -14,21 +14,20 @@ func main() {
 	flag.Parse()
 	// Read a single line from standard input
 	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	line := scanner.Text()
+	for scanner.Scan()  {
+   	    line := scanner.Text()
         
-	// Convert gron output to a jq query
-	jqQuery := gronLineToJq(line)
+   	    // Convert gron output to a jq query
+	    jqQuery := gronLineToJq(line)
 
-
-	if *verbose {
-	    fmt.Printf("✨ The INCOMING gron line looks like this: \r\n")
-            fmt.Println(line)
-	    fmt.Printf("🎊 The 'jq' query to use would look like this: \r\n")
-	    fmt.Println(jqQuery)
-	} else {
-	    fmt.Println(jqQuery)
-
+	    if *verbose {
+	        fmt.Printf("✨ The INCOMING gron line looks like this: \r\n")
+                fmt.Println(line)
+	        fmt.Printf("🎊 The 'jq' query to use would look like this: \r\n")
+	        fmt.Println(jqQuery)
+	    } else {
+	        fmt.Println(jqQuery)
+        }
     }
 }
 
@@ -39,7 +38,7 @@ func splitSlice(input []string, delimiter string) []string {
 
 	// Iterate over each element in the []string
 	for _, item := range input {
-		// Split the element by the specified delimiter
+		// Split the element by the delimiter
 		parts := strings.Split(item, delimiter)
 
 		// Append the split parts to the result
