@@ -1,3 +1,3 @@
-module github.com/bbbbbrie/grontojqqqq
+module github.com/bbbbbrie/grontojq
 
 go 1.19
